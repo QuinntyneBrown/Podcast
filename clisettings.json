@@ -1,0 +1,249 @@
+{
+  "isRoot": true,
+  "endpointType": 0,
+  "minimal": false,
+  "prefix": "app",
+  "idFormat": 0,
+  "idDotNetType": 0,
+  "isMicroserviceArchitecture": false,
+  "projects": [],
+  "rootDirectory": "C:\\projects\\Podcast",
+  "solutionName": "Podcast",
+  "solutionFileName": "Podcast.sln",
+  "apiFullPath": "C:\\projects\\Podcast\\src\\Podcast.Api\\Podcast.Api.csproj",
+  "rootNamespace": "Podcast",
+  "domainNamespace": "Podcast.Core",
+  "applicationNamespace": "Podcast.Core",
+  "infrastructureNamespace": "Podcast.Infrastructure",
+  "apiNamespace": "Podcast.Api",
+  "domainDirectory": "C:\\projects\\Podcast\\src\\Podcast.SharedKernel",
+  "applicationDirectory": "C:\\projects\\Podcast\\src\\Podcast.Core",
+  "infrastructureDirectory": "C:\\projects\\Podcast\\src\\Podcast.Infrastructure",
+  "apiDirectory": "C:\\projects\\Podcast\\src\\Podcast.Api",
+  "unitTestsDirectory": "C:\\projects\\Podcast\\tests\\Podcast.UnitTests",
+  "testingDirectory": "C:\\projects\\Podcast\\tests\\Podcast.Testing",
+  "appDirectories": [],
+  "buildingBlocksCoreNamespace": "BuildingBlocks.Core",
+  "buildingBlocksEventStoreNamespace": "BuildingBlocks.EventStore",
+  "sourceFolder": "src",
+  "testFolder": "tests",
+  "dbContextName": "PodcastDbContext",
+  "port": 5000,
+  "sslPort": 5001,
+  "plugins": null,
+  "entities": [],
+  "resources": [
+    {
+      "properties": [
+        {
+          "accessModifier": "public",
+          "type": "Guid",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "ShowId",
+          "required": true,
+          "key": true
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Title",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Author",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Description",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Image",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "DateTime",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Updated",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Link",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Email",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "string",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Language",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "Guid",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "FeedId",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "Feed?",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Feed",
+          "required": true,
+          "key": false
+        },
+        {
+          "accessModifier": "public",
+          "type": "ICollection\u003CEpisode\u003E",
+          "accessors": [
+            {
+              "accessModifier": null,
+              "type": 0
+            },
+            {
+              "accessModifier": "private",
+              "type": 1
+            }
+          ],
+          "name": "Episodes",
+          "required": true,
+          "key": false
+        }
+      ],
+      "entities": [],
+      "name": "Show",
+      "idPropertyName": "ShowId",
+      "idPropertyType": "Guid"
+    }
+  ]
+}

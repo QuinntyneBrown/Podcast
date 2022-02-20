@@ -1,0 +1,489 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Podcast",
+    "description": "",
+    "termsOfService": "https://example.com/terms",
+    "contact": {
+      "name": "",
+      "email": ""
+    },
+    "license": {
+      "name": "Use under MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Show/{showId}": {
+      "get": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Get Show by id.",
+        "description": "Get Show by id.",
+        "operationId": "getShowById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "showId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetShowByIdResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Delete Show.",
+        "description": "Delete Show.",
+        "operationId": "removeShow",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "showId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveShowResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Show": {
+      "get": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Get Shows.",
+        "description": "Get Shows.",
+        "operationId": "getShows",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetShowsResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Create Show.",
+        "description": "Create Show.",
+        "operationId": "createShow",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateShowRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateShowResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Update Show.",
+        "description": "Update Show.",
+        "operationId": "updateShow",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UpdateShowRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateShowResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Show/page/{pageSize}/{index}": {
+      "get": {
+        "tags": [
+          "Show"
+        ],
+        "summary": "Get Show Page.",
+        "description": "Get Show Page.",
+        "operationId": "getShowsPage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pageSize",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Server Error"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetShowsPageResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateShowRequest": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        }
+      }
+    },
+    "CreateShowResponse": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Episode": {
+      "type": "object"
+    },
+    "Feed": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readOnly": true
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FeedCategory"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "FeedCategory": {
+      "type": "object",
+      "properties": {
+        "feedId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "categoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        }
+      }
+    },
+    "GetShowByIdResponse": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetShowsPageResponse": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShowDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GetShowsResponse": {
+      "type": "object",
+      "properties": {
+        "shows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShowDto"
+          }
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProblemDetails": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": { }
+    },
+    "RemoveShowResponse": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ShowDto": {
+      "type": "object",
+      "properties": {
+        "showId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "feedId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "feed": {
+          "$ref": "#/definitions/Feed"
+        },
+        "episodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Episode"
+          }
+        }
+      }
+    },
+    "UpdateShowRequest": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        }
+      }
+    },
+    "UpdateShowResponse": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "$ref": "#/definitions/ShowDto"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
